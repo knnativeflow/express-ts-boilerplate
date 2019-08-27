@@ -1,0 +1,46 @@
+{
+  "name": "native-flow-express-ts-boilertemplate",
+  "version": "1.0.0",
+  "description": "Boilertemplate of express + typescript REST backend app",
+  "author": "Maciej Kopeć (dimitor115)",
+  "license": "MIT",
+  "main": "dist/server.js",
+  "scripts": {
+    "watch-server": "nodemon --watch src -e ts,tsx --exec ts-node src/server.ts",
+    "build-ts": "tsc",
+    "copy-static-assets": "ts-node copyStaticAssets.ts",
+    "tslint": "tslint -c tslint.json --fix -p tsconfig.json",
+    "serve": "node dist/server.js",
+    "build": "npm run tslint && npm run build-ts && npm run copy-static-assets",
+    "start": "npm run serve",
+    "heroku-postbuild": "npm run build"
+  },
+  "engines": {
+    "node": "10.x.x",
+    "npm": "6.x.x"
+  },
+  "devDependencies": {
+    "@types/dotenv": "^6.1.1",
+    "@types/express": "^4.17.1",
+    "@types/mongoose": "^5.5.12",
+    "@types/node": "^12.0.12",
+    "@types/shelljs": "^0.8.0",
+    "nodemon": "^1.19.1",
+    "shelljs": "^0.8.2",
+    "ts-node": "^8.3.0",
+    "tslint": "^5.18.0",
+    "typescript": "^3.5.2"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.6.8",
+    "pg": "^7.4.3",
+    "pg-connection-string": "^2.0.0",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.2.18",
+    "winston": "^3.2.1"
+  }
+}
