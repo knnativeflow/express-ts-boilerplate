@@ -1,7 +1,7 @@
 import { ErrorCodes } from './errorCodes'
 
 export class Response<T> {
-    readonly body: T | null
+    readonly body: T
     readonly messages: Message[]
 
     constructor(body: T, messages: Message[] = []) {
@@ -9,27 +9,16 @@ export class Response<T> {
         this.messages = messages
     }
 
-    static withStringMsg<T>(body: T, message: string) {
-        return new this(body, [new Message(message)])
+    static withMessageCode<T>(body: T, code: ErrorCodes, type: MessageType = MessageType.ERROR) {
+        return new this(body, [new Message(code, type)])
     }
 
-    static fromStringMsg(message: string) {
-        return new this(null, [new Message(message)])
-    }
-
-    static fromMessage(message: Message) {
-        return new this(null, [message])
-    }
-
-    static fromErrorCode(errorCode: ErrorCodes, type: MessageType) {
-        return new this(null, [new Message(errorCode, type)])
-    }
 }
 
 export class Message {
     constructor(
         readonly message: string,
-        readonly type: MessageType = MessageType.INFO
+        readonly type: MessageType = MessageType.ERROR
     ) {}
 }
 

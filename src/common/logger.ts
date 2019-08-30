@@ -1,4 +1,4 @@
-import { config } from './config'
+import { config } from '../config/config'
 import winston, { format } from 'winston'
 
 winston.configure({
