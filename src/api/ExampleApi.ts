@@ -1,5 +1,5 @@
 
-import { Body, Controller, Get, Header, Path, Post, Query, Route, SuccessResponse } from 'tsoa'
+import { Controller, Get, Route } from 'tsoa'
 import { IExampleModel } from '../models/ExampleModel'
 import { ExampleService } from '../service/ExampleService'
 import Response from '../common/Response'
