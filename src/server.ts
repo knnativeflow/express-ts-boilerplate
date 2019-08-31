@@ -7,7 +7,7 @@ import { connectToMongo } from '../src/config/config.mongoose'
 import { logger } from './common/logger'
 import { config } from './config/config'
 import { RegisterRoutes } from './api/_auto/routes'
-import exceptionHandler from './middlewears/exceptionMapper'
+import exceptionHandler from './middlewares/exceptionMapper'
 
 const app = express()
 const server = http.createServer(app)
