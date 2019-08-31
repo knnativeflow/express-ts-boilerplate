@@ -1,30 +1,19 @@
 import { ErrorCodes } from './errorCodes'
+import { Message, MessageType } from './Message'
+import { Controller } from 'tsoa';
 
 export class Response<T> {
     readonly body: T
-    readonly messages: Message[]
+    readonly httpCode: number
 
-    constructor(body: T, messages: Message[] = []) {
+    constructor(body: T, httpCode: number = 200) {
         this.body = body
-        this.messages = messages
+        this.httpCode = httpCode
     }
 
-    static withMessageCode<T>(body: T, code: ErrorCodes, type: MessageType = MessageType.ERROR) {
-        return new this(body, [new Message(code, type)])
+    unwrap(controler: Controller): T {
+        controler.setStatus(this.httpCode)
+        return this.body
     }
 
 }
-
-export class Message {
-    constructor(
-        readonly message: string,
-        readonly type: MessageType = MessageType.ERROR
-    ) {}
-}
-
-export enum MessageType {
-    SUCCESS = 'success',
-    ERROR = 'error',
-    INFO = 'info'
-}
-
