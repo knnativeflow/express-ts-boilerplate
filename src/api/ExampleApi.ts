@@ -19,7 +19,7 @@ export class ExampleApi extends Controller {
 
     private unwrap<T>() {
         return (response: Response<T>) => {
-            this.setStatus(201)
+            this.setStatus(response.httpCode)
             return response.body
         }
     }
