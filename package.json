@@ -8,12 +8,11 @@
   "scripts": {
     "dev": "nodemon --ignore src/api/_auto/routes.ts --watch src -e ts --exec yarn dev-start",
     "dev-start": "tsoa routes && ts-node src/server.ts",
-    "copy-static-assets": "ts-node copyStaticAssets.ts",
+    "build-ts": "tsc",
     "tslint": "tslint -c tslint.json --fix -p tsconfig.json",
     "serve": "node dist/server.js",
-    "build": "npm run tslint && npm run build-ts && npm run copy-static-assets",
-    "start": "npm run serve",
-    "heroku-postbuild": "npm run build",
+    "build": "yarn run tslint && yarn run build-ts",
+    "start": "yarn run serve",
     "tsoa:swagger": "tsoa swagger",
     "tsoa:routes": "tsoa routes"
   },
