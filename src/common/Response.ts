@@ -1,8 +1,6 @@
-import { ErrorCodes } from './errorCodes'
-import { Message, MessageType } from './Message'
-import { Controller } from 'tsoa';
+import { Controller } from 'tsoa'
 
-export class Response<T> {
+export default class Response<T> {
     readonly body: T
     readonly httpCode: number
 

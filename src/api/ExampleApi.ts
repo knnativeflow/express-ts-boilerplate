@@ -2,15 +2,13 @@
 import { Body, Controller, Get, Header, Path, Post, Query, Route, SuccessResponse } from 'tsoa'
 import { IExampleModel } from '../models/ExampleModel'
 import { ExampleService } from '../service/ExampleService'
-import { Response } from '../common/Response'
+import Response from '../common/Response'
 
 @Route()
 export class ExampleApi extends Controller {
 
     @Get('/examples')
     public async getExamples(): Promise<IExampleModel> {
-        this.setStatus(200)
-        console.log(this)
         return ExampleService.getExamples().then(this.unwrap())
     }
 
@@ -21,7 +19,7 @@ export class ExampleApi extends Controller {
 
     private unwrap<T>() {
         return (response: Response<T>) => {
-            this.setStatus(200)
+            this.setStatus(201)
             return response.body
         }
     }

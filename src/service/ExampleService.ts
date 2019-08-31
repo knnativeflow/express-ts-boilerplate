@@ -1,5 +1,5 @@
 import { IExampleModel } from '../models/ExampleModel'
-import { Response } from '../common/Response'
+import  Response  from '../common/Response'
 import Exception from '../common/Exception'
 import { ErrorCodes } from '../common/errorCodes'
 

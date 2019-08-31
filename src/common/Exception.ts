@@ -1,5 +1,5 @@
 import { Message } from './Message'
-import { ErrorCodes } from './errorCodes';
+import { ErrorCodes } from './errorCodes'
 
 export default class Exception {
     messages: [Message]
@@ -12,5 +12,11 @@ export default class Exception {
 
     static fromMessage(errorCode: ErrorCodes, httpCode: number = 500) {
         return new this([new Message(errorCode)], httpCode)
+    }
+
+    toString(): string {
+        return this.messages
+        .map(m => m.message)
+        .join('; ')
     }
 }
