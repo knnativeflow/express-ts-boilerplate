@@ -1,0 +1,1 @@
+## In this folder, `TSOA` puts auto generated file `routes.ts` which contains mappings form `express router` to our api definitions. Do not remove this folder or edit `routes.ts` manually.
