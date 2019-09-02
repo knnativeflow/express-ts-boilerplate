@@ -9,6 +9,7 @@ import { logger } from './common/logger'
 import { config } from './config/config'
 import { RegisterRoutes } from './api/_auto/routes'
 import exceptionHandler from './middlewares/exceptionMapper'
+import path from 'path'
 
 const swaggerJSON = require('../dist/swagger.json')
 
@@ -22,6 +23,7 @@ RegisterRoutes(app)
 app.use(exceptionHandler)
 app.use('/swagger.json', express.static(__dirname + '/swagger/swagger.json'))
 app.use('/', swaggerUI.serve, swaggerUI.setup(swaggerJSON))
+app.use('/static', express.static(path.join(__dirname, '../dist')))
 
 server.listen(config.port)
 logger.info(`Server running on port : ${config.port}`)
