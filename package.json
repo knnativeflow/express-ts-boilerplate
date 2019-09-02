@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "nodemon --ignore src/api/_auto/routes.ts --watch src -e ts --exec yarn dev-start",
     "dev-start": "tsoa routes && ts-node src/server.ts",
-    "build-ts": "tsc",
+    "build-ts": "tsoa routes && tsc",
     "tslint": "tslint -c tslint.json -p tsconfig.json",
     "tslint:fix": "tslint -c tslint.json --fix -p tsconfig.json",
     "serve": "node dist/server.js",
