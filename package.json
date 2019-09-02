@@ -7,14 +7,15 @@
   "main": "dist/server.js",
   "scripts": {
     "dev": "nodemon --ignore src/api/_auto/routes.ts --watch src -e ts --exec yarn dev-start",
-    "dev-start": "tsoa routes && ts-node src/server.ts",
+    "dev-start": "tsoa routes && tsoa swagger && yarn run build && ts-node src/server.ts ",
     "build-ts": "tsc",
     "tslint": "tslint -c tslint.json --fix -p tsconfig.json",
     "serve": "node dist/server.js",
     "build": "yarn run tslint && yarn run build-ts",
     "start": "yarn run serve",
     "tsoa:swagger": "tsoa swagger",
-    "tsoa:routes": "tsoa routes"
+    "tsoa:routes": "tsoa routes",
+    "swaggerUI": "tsoa swagger && yarn run build && yarn run serve"
   },
   "engines": {
     "npm": "6.x.x"
@@ -38,6 +39,7 @@
     "express": "^4.17.1",
     "mongoose": "^5.6.8",
     "reflect-metadata": "^0.1.13",
+    "swagger-ui-express": "^4.0.7",
     "tsoa": "^2.4.11",
     "winston": "^3.2.1"
   }
