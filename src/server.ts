@@ -2,24 +2,22 @@ import express from 'express'
 import * as bodyParser from 'body-parser'
 import * as http from 'http'
 import cors from 'cors'
+import requestsLog from './middlewares/requestsLogger' 
 import 'reflect-metadata'
 import { connectToMongo } from '../src/config/config.mongoose'
 import { logger } from './common/logger'
 import { config } from './config/config'
 import { RegisterRoutes } from './api/_auto/routes'
 import exceptionHandler from './middlewares/exceptionMapper'
+import { isNamedExports } from 'typescript';
 
 const app = express()
 const server = http.createServer(app)
 
-app.use(function(req, res, next){
-    logger.info(req.method + " " + req.path);
-    next();
-})
-
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors())
+app.use(requestsLog)
 RegisterRoutes(app)
 app.use(exceptionHandler)
 
