@@ -1,6 +1,7 @@
 import express from 'express'
 import * as bodyParser from 'body-parser'
 import * as http from 'http'
+import * as swaggerUI from 'swagger-ui-express'
 import cors from 'cors'
 import 'reflect-metadata'
 import { connectToMongo } from '../src/config/config.mongoose'
@@ -8,7 +9,6 @@ import { logger } from './common/logger'
 import { config } from './config/config'
 import { RegisterRoutes } from './api/_auto/routes'
 import exceptionHandler from './middlewares/exceptionMapper'
-import * as swaggerUI from 'swagger-ui-express'
 
 const swaggerJSON = require('../dist/swagger.json')
 
