@@ -8,12 +8,10 @@
   "scripts": {
     "dev": "nodemon --ignore src/api/_auto/routes.ts --watch src -e ts --exec yarn dev-start",
     "dev-start": "tsoa routes && ts-node src/server.ts",
-    "build-ts": "tsoa routes && tsc",
+    "build-ts": "tsoa routes && tsoa swagger && tsc",
     "tslint": "tslint -c tslint.json -p tsconfig.json",
     "tslint:fix": "tslint -c tslint.json --fix -p tsconfig.json",
-    "serve": "node dist/server.js",
-    "build": "yarn run tslint && yarn run build-ts",
-    "start": "yarn run serve",
+    "start": "node dist/server.js",
     "tsoa:swagger": "tsoa swagger",
     "tsoa:routes": "tsoa routes"
   },
