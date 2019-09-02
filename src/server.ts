@@ -12,6 +12,11 @@ import exceptionHandler from './middlewares/exceptionMapper'
 const app = express()
 const server = http.createServer(app)
 
+app.use(function (req, res, next) {
+    logger.info(req.method + " " + req.path);
+    next();
+  })
+
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors())
