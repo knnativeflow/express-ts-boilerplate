@@ -1,4 +1,5 @@
-# Native Flow TS Express boilertemplate
+# Native Flow TS Express boilertemplate 
+![Build Status](https://travis-ci.org/dimitor115/express-ts-boilertemplate.svg?branch=master)
 
 This is boilertemple for future projects in Native Flow, still during development.
 
@@ -7,4 +8,10 @@ This is boilertemple for future projects in Native Flow, still during developmen
 * `Express` - https://expressjs.com/
 * `Tsoa` - https://github.com/lukeautry/tsoa
 * `Mongoose`- https://mongoosejs.com/
+
+## Running
+
+* To run app in development mode (server will restart after each change) : `yarn dev`
+* To run app in production mode use `yarn build-ts` and `yarn start`
+
 
