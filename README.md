@@ -1,4 +1,4 @@
-# Native Flow TS Express boilertemplate 
+# Native Flow TS Express boilerplate 
 ![Build Status](https://travis-ci.org/dimitor115/express-ts-boilertemplate.svg?branch=master)
 
 This is boilertemple for future projects in Native Flow, still during development.
@@ -13,5 +13,3 @@ This is boilertemple for future projects in Native Flow, still during developmen
 
 * To run app in development mode (server will restart after each change) : `yarn dev`
 * To run app in production mode use `yarn build-ts` and `yarn start`
-
-
