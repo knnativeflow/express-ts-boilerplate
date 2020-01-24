@@ -7,6 +7,6 @@ connectToMongo(config.databaseUrl)
 
     // DEFAULT PLAYGROUND
     // HERE YOU CAN PLAY WITH SERVICES
-    const result = await ExampleService.getExamples()
+    const result = await ExampleService.getExamples("ji")
     console.log(result)
 })
