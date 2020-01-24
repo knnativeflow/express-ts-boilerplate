@@ -7,8 +7,8 @@
   "main": "dist/server.js",
   "scripts": {
     "dev": "nodemon --ignore src/api/_auto/routes.ts --watch src -e ts --exec yarn dev-start",
-    "dev-start": "tsoa routes && tsoa swagger && ts-node src/server.ts",
-    "build": "tsoa routes && tsoa swagger && tsc && ts-node copyStaticAssets.ts",
+    "dev-start": "tsoa routes && tsoa swagger && ts-node -r tsconfig-paths/register src/server.ts",
+    "build": "tsoa routes && tsoa swagger && ttsc && ts-node copyStaticAssets.ts",
     "lint": "eslint --ext src/**/*.ts",
     "lint:fix": "eslint --fix src/**/*.ts",
     "start": "node dist/server.js",
@@ -31,6 +31,7 @@
     "@types/node": "^12.0.12",
     "@types/shelljs": "^0.8.0",
     "@types/swagger-ui-express": "^3.0.1",
+    "tsconfig-paths": "^3.9.0",
     "@types/uuid": "^3.4.5",
     "@typescript-eslint/eslint-plugin": "^2.15.0",
     "@typescript-eslint/parser": "^2.15.0",
@@ -39,6 +40,8 @@
     "shelljs": "^0.8.2",
     "ts-node": "^8.3.0",
     "tslint": "^5.18.0",
+    "ttypescript": "^1.5.10",
+    "@zerollup/ts-transform-paths": "^1.7.11",
     "typescript": "^3.7.1"
   },
   "dependencies": {
