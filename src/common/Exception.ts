@@ -5,12 +5,12 @@ export default class Exception {
     messages: [Message]
     httpCode: number
 
-    constructor(messages: [Message], httpCode: number = 500) {
+    constructor(messages: [Message], httpCode = 500) {
         this.messages = messages
         this.httpCode = httpCode
     }
 
-    static fromMessage(errorCode: ErrorCodes, httpCode: number = 500) {
+    static fromMessage(errorCode: ErrorCodes, httpCode = 500): Exception {
         return new this([new Message(errorCode)], httpCode)
     }
 

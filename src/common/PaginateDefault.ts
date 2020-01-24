@@ -22,18 +22,18 @@ const SIZE_VALIDATOR = (size: number) => Number.isInteger(size) && size >= 1
 const SORT_DIR_VALIDATOR = (sortDir: string) => sortDir === 'desc' || sortDir === 'asc'
 
 export interface Page<T> {
-    content: Array<T>,
-    totalElements: number,
-    size: number,
-    page: number
+    content: Array<T>;
+    totalElements: number;
+    size: number;
+    page: number;
 }
 
 export default class PaginateDefault implements PaginateOptions {
     constructor(
         readonly page: number | undefined,
         readonly limit: number | undefined,
-        readonly sort: Object | undefined,
-        readonly customLabels: Object
+        readonly sort: Record<string, any> | undefined,
+        readonly customLabels: Record<string, any>
     ) { }
 
     static fromParams(
@@ -71,7 +71,7 @@ export default class PaginateDefault implements PaginateOptions {
     }
 
 
-    private static prepareSortConfig(sortBy?: string, sortDir?: string): Object | undefined {
+    private static prepareSortConfig(sortBy?: string, sortDir?: string): Record<string, any> | undefined {
         if (sortBy && sortDir)
             return { [sortBy]: sortDir.toLowerCase() === 'asc' ? 1 : -1 }
 

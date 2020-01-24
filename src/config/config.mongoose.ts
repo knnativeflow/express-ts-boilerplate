@@ -2,7 +2,7 @@ import { logger } from '../common/logger'
 
 import mongoose from 'mongoose'
 
-export const connectToMongo = (url: string) => {
+export const connectToMongo = (url: string): Promise<any> => {
     mongoose.connection
         .on('connected', () => logger.info('Connected to the database'))
         .on('error', () => logger.error('Error with database connection'))

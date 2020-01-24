@@ -7,9 +7,9 @@ import { config } from '../config/config'
 // TODO: uzupełnić typ o pełną definicję typu
 interface TokenPayload {
     user: {
-        login: string
-    },
-    exp: number
+        login: string;
+    };
+    exp: number;
 }
 
 export async function expressAuthentication(request: express.Request, securityName: string, scopes?: string[]): Promise<any> {
@@ -26,7 +26,7 @@ export async function expressAuthentication(request: express.Request, securityNa
         }
 
         // const result = await User.findOne({ login: payload.user.login })
-        const result = true
+        const result = await true
 
         if (!result) {
             throw Exception.fromMessage(ErrorCodes.NO_ACCESS, 403)

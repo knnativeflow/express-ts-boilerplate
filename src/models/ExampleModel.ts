@@ -1,11 +1,11 @@
-export interface IExampleModel {
-    name: string
-    age: number
-    another: IAnotherModel
+export interface ExampleModel {
+    name: string;
+    age: number;
+    another: AnotherModel;
 }
 
-export interface IAnotherModel {
-    field: string
-    date: string
-    isRequired: boolean
+export interface AnotherModel {
+    field: string;
+    date: string;
+    isRequired: boolean;
 }

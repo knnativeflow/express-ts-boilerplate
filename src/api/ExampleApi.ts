@@ -1,8 +1,7 @@
 
-import { Controller, Get, Route, Security, Request, Query, Tags } from 'tsoa'
-import { IExampleModel } from '../models/ExampleModel'
+import { Controller, Get, Route, Security, Query, Tags } from 'tsoa'
+import { ExampleModel } from '../models/ExampleModel'
 import { ExampleService } from '../service/ExampleService'
-import AuthRequest from '../common/AuthRequest'
 
 @Route()
 @Tags('Examples')
@@ -17,18 +16,18 @@ export class ExampleApi extends Controller {
     public async getExamples(
         someParam: string,
         @Query('page') page?: number,
-    ): Promise<IExampleModel> {
+    ): Promise<ExampleModel> {
         return ExampleService.getExamples(someParam, page)
     }
 
     @Security('jwt')
     @Get('/secure')
-    public async secure(@Request() request: AuthRequest): Promise<IExampleModel> {
+    public async secure(): Promise<ExampleModel> {
         return ExampleService.getExamples('chuj')
     }
 
     @Get('/error')
-    public async getError(): Promise<IExampleModel> {
+    public async getError(): Promise<ExampleModel> {
         return ExampleService.getWithException()
     }
 }
