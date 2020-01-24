@@ -9,20 +9,26 @@ import { logger } from '../common/logger'
 
 // TODO: Impelement handling mongoose erros
 
-export default function exceptionHandler(
+export default function (
     err: Errback,
     req: ExpressRequest,
     res: ExpressResponse,
     next: NextFunction
-) {
-     if (_isException(err)) {
-            logger.error('An error occured: ' + err.toString())
-            res.status(err.httpCode)
-            res.json({ messages: err.messages })
-        } else {
-            res.status(500)
-            res.send({messages: ['Unknown error.']})
-        }
+): void {
+    if (_isException(err)) {
+        logger.error('An error occurred: ' + err.toString())
+        res.status(err.httpCode)
+        res.json({ messages: err.messages })
+    } else if (err.name && (err as any).message) {
+        const msg = `${err.name}: ${(err as any).message}`
+        logger.error(msg)
+        res.status(500)
+        res.send({ messages: [msg] })
+    } else {
+        logger.error(err)
+        res.status(500)
+        res.send({ messages: ['Unknown error.'] })
+    }
 }
 
 function _isException(toBeDetermined: any): toBeDetermined is Exception {

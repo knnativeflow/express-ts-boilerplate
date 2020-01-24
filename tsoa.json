@@ -1,20 +1,29 @@
 {
     "swagger": {
-        "outputDirectory": "./dist",
+        "outputDirectory": "./src/static",
         "entryFile": "./src/server.ts",
         "basePath": "/api/v1",
         "middleware": "express",
         "controllerPathGlobs": [
             "./src/api/*"
-        ]
+        ],
+        "securityDefinitions": {
+            "jwt": {
+                "type": "apiKey",
+                "name": "Authorization",
+                "in": "header"
+            }
+        }
     },
     "routes": {
         "basePath": "/api/v1",
         "entryFile": "./src/server.ts",
-        "routesDir": "./src/api/_auto"
+        "routesDir": "./src/api/_auto",
+        "authenticationModule": "./src/middlewares/authentication.ts"
     },
     "ignore": [
-      "**/node_modules/**",
-      "./src/api/_auto/*"
+        "**/node_modules/**",
+        "./src/api/_auto/*",
+        "./src/static/*"
     ]
 }

@@ -12,7 +12,7 @@ import { RegisterRoutes } from './api/_auto/routes'
 import exceptionHandler from './middlewares/exceptionMapper'
 import path from 'path'
 
-const swaggerJSON = require('../dist/swagger.json')
+const swaggerJSON = require('./static/swagger.json')
 
 const app = express()
 const server = http.createServer(app)
@@ -23,7 +23,7 @@ app.use(cors())
 app.use(requestLogger)
 RegisterRoutes(app)
 app.use(exceptionHandler)
-app.use('/static', express.static(path.join(__dirname, '../dist')))
+app.use('/static', express.static(path.join(__dirname, './static')))
 app.use('/docs/v1/swagger', swaggerUI.serve, swaggerUI.setup(swaggerJSON))
 
 server.listen(config.port)

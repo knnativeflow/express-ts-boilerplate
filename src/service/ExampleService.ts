@@ -1,14 +1,11 @@
 import { IExampleModel } from '../models/ExampleModel'
-import  Response  from '../common/Response'
 import Exception from '../common/Exception'
 import { ErrorCodes } from '../common/errorCodes'
-
 export class ExampleService {
 
-    public static async getExamples(): Promise<Response<IExampleModel>> {
-        return await new Response(
-            {
-                name: 'ASD',
+    public static async getExamples(someparam: string, page: number = 0): Promise<IExampleModel> {
+        return {
+                name: someparam,
                 age: 5,
                 another: {
                     field: 'asdasd',
@@ -16,10 +13,10 @@ export class ExampleService {
                     isRequired: true
                 }
             }
-        )
+
     }
 
-    public static async getWithException(): Promise<Response<IExampleModel>> {
+    public static async getWithException(): Promise<IExampleModel> {
         throw Exception.fromMessage(ErrorCodes.EXAMPLE)
     }
 }
