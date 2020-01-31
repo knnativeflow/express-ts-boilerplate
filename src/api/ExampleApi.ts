@@ -1,7 +1,7 @@
 
 import { Controller, Get, Route, Security, Query, Tags } from 'tsoa'
 import { ExampleModel } from 'models/ExampleModel'
-import { ExampleService } from '../service/ExampleService'
+import { ExampleService } from 'service/ExampleService'
 
 @Route()
 @Tags('Examples')

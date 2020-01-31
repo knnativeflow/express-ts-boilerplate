@@ -7,15 +7,14 @@
   "main": "dist/server.js",
   "scripts": {
     "dev": "nodemon --ignore src/api/_auto/routes.ts --watch src -e ts --exec yarn dev-start",
-    "dev-start": "tsoa routes && tsoa swagger && ts-node -r tsconfig-paths/register src/server.ts",
-    "build": "tsoa routes && tsoa swagger && ttsc && ts-node copyStaticAssets.ts",
+    "dev-start": "yarn tsoaGen && ts-node -r tsconfig-paths/register src/server.ts",
+    "tsoaGen": "ts-node -r tsconfig-paths/register src/common/RoutesGenerator.ts",
+    "build": "yarn tsoaGen && ttsc && ts-node copyStaticAssets.ts",
     "lint": "eslint --ext src/**/*.ts",
     "lint:fix": "eslint --fix src/**/*.ts",
     "start": "node dist/server.js",
-    "tsoa:swagger": "tsoa swagger",
-    "tsoa:routes": "tsoa routes",
     "test": "jest",
-    "playground": "ts-node src/playground.ts"
+    "playground": "ts-node tsconfig-paths/register src/playground.ts"
   },
   "engines": {
     "npm": "6.x.x"
